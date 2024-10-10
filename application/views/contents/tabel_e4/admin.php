@@ -36,7 +36,7 @@
   } else {
     $counter = 1;
     foreach ($tbl_e4->result() as $tl_e4):
-      echo card_file(
+      echo card_regular(
         $counter,
         $tl_e4->$tabel_e4_field1,
         $tabel_e4_field1_alias . ": " . $tl_e4->$tabel_e4_field1,
@@ -46,7 +46,6 @@
         'text-light bg-dark',
         'col-md-3',
         $tabel_e4,
-        $tl_e4->$tabel_e4_field3
       );
     $counter++;
     endforeach;
@@ -124,7 +123,9 @@
           <div class="modal-body">
             <?= input_hidden('tabel_e4_field1', $tl_e4->$tabel_e4_field1, 'required') ?>
             <?= input_edit($tl_e4->$tabel_e4_field1, 'text', 'tabel_e4_field2', $tl_e4->$tabel_e4_field2, 'required') ?>
-            <?= edit_file($tabel_e4, 'tabel_e4_field3', $tl_e4->$tabel_e4_field3, 'required') ?>
+            <?= input_edit($tl_e4->$tabel_e4_field1, 'text', 'tabel_e4_field3', $tl_e4->$tabel_e4_field3, 'required') ?>
+            <?= input_edit($tl_e4->$tabel_e4_field1, 'text', 'tabel_e4_field4', $tl_e4->$tabel_e4_field4, 'required') ?>
+            <?= input_edit($tl_e4->$tabel_e4_field1, 'text', 'tabel_e4_field5', $tl_e4->$tabel_e4_field5, 'required') ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->
@@ -149,7 +150,9 @@
           <div class="modal-body">
             <?= table_data(
               row_data('tabel_e4_field2', $tl_e4->$tabel_e4_field2) . 
-              row_file($tabel_e4, 'tabel_e4_field3', $tl_e4->$tabel_e4_field3),
+              row_data('tabel_e4_field3', $tl_e4->$tabel_e4_field3) . 
+              row_data('tabel_e4_field4', $tl_e4->$tabel_e4_field4) . 
+              row_data('tabel_e4_field5', $tl_e4->$tabel_e4_field5),
               'table-light'
             ) ?>
 
