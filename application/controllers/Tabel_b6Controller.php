@@ -29,7 +29,7 @@ class Tabel_b6Controller extends OmnitagsController
 		}
 
 		$data1 = array(
-			'title' => lang('tabel_b6_alias_v3_title'),
+			'title' => $this->title['tabel_b6_alias_v3'],
 			'konten' => $this->v3['tabel_b6'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b6']),
 			'tbl_b6' => $result,
@@ -37,7 +37,7 @@ class Tabel_b6Controller extends OmnitagsController
 			'tabel_b6_field7_value' => $param1,
 		);
 
-		$this->load_page('tabel_b6', '_layouts/template', $data1);
+		$this->load_page('tabel_b6', 'layouts/template_admin', $data1);
 	}
 
 	// Print all data
@@ -47,13 +47,13 @@ class Tabel_b6Controller extends OmnitagsController
 		$this->page_session_3();
 
 		$data1 = array(
-			'title' => lang('tabel_b6_alias_v4_title'),
+			'title' => $this->title['tabel_b6_alias_v4'],
 			'konten' => $this->v4['tabel_b6'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b6']),
 			'tbl_b6' => $this->tl_b6->get_all_b6(),
 		);
 
-		$this->load_page('tabel_b6', '_layouts/printpage', $data1);
+		$this->load_page('tabel_b6', 'layouts/printpage', $data1);
 	}
 
 	// Print one data
@@ -89,11 +89,11 @@ class Tabel_b6Controller extends OmnitagsController
 			$tabel_b6_field4 = 'https://' . $this->v_post['tabel_b6_field4'];
 		}
 
-		// $id = get_next_code($this->aliases['tabel_e1'], $this->aliases['tabel_e1_field1'], 'FK');
-		// $this->aliases['tabel_e1_field1'] => $id,
+		// $id = get_next_code($this->aliases['tabel_e1'], 'id', 'FK');
+		// 'id' => $id,
 
 		$data = array(
-			$this->aliases['tabel_b6_field1'] => '',
+			'id' => '',
 			$this->aliases['tabel_b6_field2'] => $this->v_post['tabel_b6_field2'],
 			$this->aliases['tabel_b6_field3'] => $this->v_post['tabel_b6_field3'],
 			$this->aliases['tabel_b6_field4'] => $tabel_b6_field4,
@@ -103,7 +103,7 @@ class Tabel_b6Controller extends OmnitagsController
 
 			'created_at' => date("Y-m-d\TH:i:s"),
 			'updated_at' => date("Y-m-d\TH:i:s"),
-			'updated_by' => userdata($this->aliases['tabel_c2_field1']),
+			'updated_by' => userdata('id'),
 		);
 
 		$aksi = $this->tl_b6->insert_b6($data);
@@ -142,7 +142,7 @@ class Tabel_b6Controller extends OmnitagsController
 
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
-			$this->aliases['tabel_b6_field1'] => $code,
+			'id' => $code,
 			$this->aliases['tabel_b6_field2'] => $this->v_post['tabel_b6_field2'],
 			$this->aliases['tabel_b6_field3'] => $this->v_post['tabel_b6_field3'],
 			$this->aliases['tabel_b6_field4'] => $this->v_post['tabel_b6_field4'],
@@ -150,7 +150,7 @@ class Tabel_b6Controller extends OmnitagsController
 			$this->aliases['tabel_b6_field7'] => $this->v_post['tabel_b6_field7'],
 
 			'updated_at' => date("Y-m-d\TH:i:s"),
-			'updated_by' => userdata($this->aliases['tabel_c2_field1']),
+			'updated_by' => userdata('id'),
 		);
 
 		$aksi = $this->tl_b6->update_b6($data, $code);
@@ -175,7 +175,7 @@ class Tabel_b6Controller extends OmnitagsController
 			$this->aliases['tabel_b6_field6'] => $this->aliases['tabel_b6_field6_value1'],
 
 			'updated_at' => date("Y-m-d\TH:i:s"),
-			'updated_by' => userdata($this->aliases['tabel_c2_field1']),
+			'updated_by' => userdata('id'),
 		);
 
 		$aksi = $this->tl_b6->update_b6($data, $code);
@@ -201,7 +201,7 @@ class Tabel_b6Controller extends OmnitagsController
 			$this->aliases['tabel_b6_field6'] => $this->aliases['tabel_b6_field6_value2'],
 
 			'updated_at' => date("Y-m-d\TH:i:s"),
-			'updated_by' => userdata($this->aliases['tabel_c2_field1']),
+			'updated_by' => userdata('id'),
 		);
 
 		$aksi = $this->tl_b6->update_b6($data, $code);
@@ -224,7 +224,7 @@ class Tabel_b6Controller extends OmnitagsController
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
 			'deleted_at' => date("Y-m-d\TH:i:s"),
-			'updated_by' => userdata($this->aliases['tabel_c2_field1']),
+			'updated_by' => userdata('id'),
 		);
 
 		$aksi = $this->tl_b6->update_b6($data, $code);
@@ -247,7 +247,7 @@ class Tabel_b6Controller extends OmnitagsController
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
 			'deleted_at' => NULL,
-			'updated_by' => userdata($this->aliases['tabel_c2_field1']),
+			'updated_by' => userdata('id'),
 		);
 
 		$aksi = $this->tl_b6->update_b6($data, $code);
@@ -280,17 +280,16 @@ class Tabel_b6Controller extends OmnitagsController
 		$this->page_session_3();
 
 		$data1 = array(
-			'title' => lang('tabel_b6_alias_v9_title'),
+			'title' => $this->title['tabel_b6_alias_v9'],
 			'konten' => $this->v9['tabel_b6'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b6']),
 			'tbl_b6' => $this->tl_b6->get_all_b6_archive(),
 		);
 
-		$this->load_page('tabel_b6', '_layouts/template', $data1);
+		$this->load_page('tabel_b6', 'layouts/template', $data1);
 	}
-
-	// Public Pages
-	public function detail_archive($code = null)
+	
+	public function detai_archive($code = null)
 	{
 		$this->declarew();
 		$this->page_session_all();
@@ -299,13 +298,13 @@ class Tabel_b6Controller extends OmnitagsController
 		$this->check_data($tabel);
 
 		$data1 = array(
-			'title' => lang('tabel_b6_alias_v10_title'),
+			'title' => $this->title['tabel_b6_alias_v10'],
 			'konten' => $this->v10['tabel_b6'],
 			'dekor' => $this->tl_b6->dekor($this->theme_id, $this->aliases['tabel_b6']),
 			'tbl_b6' => $this->tl_b6->get_b6_by_field_archive('tabel_b6_field1', $code),
 		);
 
-		$this->load_page('tabel_b6', '_layouts/template', $data1);
+		$this->load_page('tabel_b6', 'layouts/template', $data1);
 	}
 	
 	public function history($code = null)
@@ -318,14 +317,14 @@ class Tabel_b6Controller extends OmnitagsController
 
 		$data1 = array(
 			'table_id' => $code,
-			'title' => lang('tabel_b6_alias_v11_title'),
+			'title' => $this->title['tabel_b6_alias_v11'],
 			'konten' => $this->v11['tabel_b6'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b6']),
 			'tbl_b6' => $this->tl_ot->get_by_field_history('tabel_b6', 'tabel_b6_field1', $code),
 			'current' => $this->tl_ot->get_by_field('tabel_b6', 'tabel_b6_field1', $code),
 		);
 
-		$this->load_page('tabel_b6', '_layouts/template', $data1);
+		$this->load_page('tabel_b6', 'layouts/template_admin', $data1);
 	}
 
 	//Push History Data into current data
@@ -337,14 +336,14 @@ class Tabel_b6Controller extends OmnitagsController
 		$tabel = $this->tl_ot->get_by_id_history('tabel_b6', $code)->result();
 		$this->check_data($tabel);
 
-		$code = $tabel[0]->{$this->aliases['tabel_b6_field1']};
+		$code = $tabel[0]->id;
 
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
 			$this->aliases['tabel_b6_field2'] => $tabel[0]->{$this->aliases['tabel_b6_field2']},
 
 			'updated_at' => date("Y-m-d\TH:i:s"),
-			'updated_by' => userdata($this->aliases['tabel_c2_field1']),
+			'updated_by' => userdata('id'),
 		);
 
 		$aksi = $this->tl_b6->update_b6($data, $code);

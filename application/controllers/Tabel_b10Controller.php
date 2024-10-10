@@ -22,7 +22,7 @@ class Tabel_b10Controller extends OmnitagsController
 		}
 
 		$data1 = array(
-			'title' => lang('tabel_b10_alias_v1_title'),
+			'title' => $this->title['tabel_b10_alias_v1'],
 			'konten' => $this->v1['tabel_b10'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b10']),
 			'tbl_b10' => $result,
@@ -30,7 +30,7 @@ class Tabel_b10Controller extends OmnitagsController
 			'tabel_b10_field4_value' => $param1
 		);
 
-		$this->load_page('tabel_b10', '_layouts/template', $data1);
+		$this->load_page('tabel_b10', 'layouts/template', $data1);
 	}
 
 	// Pages
@@ -44,13 +44,13 @@ class Tabel_b10Controller extends OmnitagsController
 		$this->check_data($tabel);
 
 		$data1 = array(
-			'title' => lang('tabel_b10_alias_v8_title'),
+			'title' => $this->title['tabel_b10_alias_v8'],
 			'konten' => $this->v8['tabel_b10'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b10']),
 			'tbl_b10' => $this->tl_b10->get_b10_by_field('tabel_b10_field1', $code),
 		);
 
-		$this->load_page('tabel_b10', '_layouts/template', $data1);
+		$this->load_page('tabel_b10', 'layouts/template_admin', $data1);
 	}
 
 
@@ -74,7 +74,7 @@ class Tabel_b10Controller extends OmnitagsController
 		}
 
 		$data1 = array(
-			'title' => lang('tabel_b10_alias_v3_title'),
+			'title' => $this->title['tabel_b10_alias_v3'],
 			'konten' => $this->v3['tabel_b10'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b10']),
 			'tbl_b10' => $result,
@@ -82,7 +82,7 @@ class Tabel_b10Controller extends OmnitagsController
 			'tabel_b10_field4_value' => $param1
 		);
 
-		$this->load_page('tabel_b10', '_layouts/template', $data1);
+		$this->load_page('tabel_b10', 'layouts/template_admin', $data1);
 	}
 
 	// Print all data
@@ -92,13 +92,13 @@ class Tabel_b10Controller extends OmnitagsController
 		$this->page_session_3();
 
 		$data1 = array(
-			'title' => lang('tabel_b10_alias_v4_title'),
+			'title' => $this->title['tabel_b10_alias_v4'],
 			'konten' => $this->v4['tabel_b10'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b10']),
 			'tbl_b10' => $this->tl_b10->get_all_b10(),
 		);
 
-		$this->load_page('tabel_b10', '_layouts/printpage', $data1);
+		$this->load_page('tabel_b10', 'layouts/printpage', $data1);
 	}
 
 	// Functions
@@ -131,24 +131,24 @@ class Tabel_b10Controller extends OmnitagsController
 				$method
 			);
 
-			$code = $this->add_code('tabel_b10', $this->aliases['tabel_b10_field1'], 5, '10');
+			$code = $this->add_code('tabel_b10', 'id', 5, '10');
 
 			$data = array(
-				$this->aliases['tabel_b10_field1'] => $code,
+				'id' => $code,
 				$this->aliases['tabel_b10_field2'] => $gambar,
 				$this->aliases['tabel_b10_field3'] => $this->v_post['tabel_b10_field3'],
 				$this->aliases['tabel_b10_field4'] => $this->v_post['tabel_b10_field4'],
 
 				'created_at' => date("Y-m-d\TH:i:s"),
 				'updated_at' => date("Y-m-d\TH:i:s"),
-				'updated_by' => userdata($this->aliases['tabel_c2_field1']),
+				'updated_by' => userdata('id'),
 			);
 
 			$aksi = $this->tl_b10->insert_b10($data);
 
 			$notif = $this->handle_4b($aksi, 'tabel_b10');
 
-			redirect(site_url($this->language_code . '/' . $this->aliases['tabel_b10'] . '/admin'));
+			redirect(site_url($this->aliases['tabel_b10'] . '/admin'));
 		} else {
 			set_flashdata($this->views['flash1'], $this->aliases['tabel_b10_field2'] . ' telah digunakan!');
 			redirect($_SERVER['HTTP_REFERER']);
@@ -194,7 +194,7 @@ class Tabel_b10Controller extends OmnitagsController
 			$this->aliases['tabel_b10_field4'] => $this->v_post['tabel_b10_field4'],
 
 			'updated_at' => date("Y-m-d\TH:i:s"),
-			'updated_by' => userdata($this->aliases['tabel_c2_field1']),
+			'updated_by' => userdata('id'),
 		);
 
 		$aksi = $this->tl_b10->update_b10($data, $code);
@@ -217,7 +217,7 @@ class Tabel_b10Controller extends OmnitagsController
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
 			'deleted_at' => date("Y-m-d\TH:i:s"),
-			'updated_by' => userdata($this->aliases['tabel_c2_field1']),
+			'updated_by' => userdata('id'),
 		);
 
 		$aksi = $this->tl_b10->update_b10($data, $code);
@@ -240,7 +240,7 @@ class Tabel_b10Controller extends OmnitagsController
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
 			'deleted_at' => NULL,
-			'updated_by' => userdata($this->aliases['tabel_c2_field1']),
+			'updated_by' => userdata('id'),
 		);
 
 		$aksi = $this->tl_b10->update_b10($data, $code);
@@ -280,17 +280,16 @@ class Tabel_b10Controller extends OmnitagsController
 		$this->page_session_3();
 
 		$data1 = array(
-			'title' => lang('tabel_b10_alias_v9_title'),
+			'title' => $this->title['tabel_b10_alias_v9'],
 			'konten' => $this->v9['tabel_b10'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b10']),
 			'tbl_b10' => $this->tl_b10->get_all_b10_archive(),
 		);
 
-		$this->load_page('tabel_b10', '_layouts/template', $data1);
+		$this->load_page('tabel_b10', 'layouts/template', $data1);
 	}
-
-	// Public Pages
-	public function detail_archive($code = null)
+	
+	public function detai_archive($code = null)
 	{
 		$this->declarew();
 		$this->page_session_all();
@@ -299,13 +298,13 @@ class Tabel_b10Controller extends OmnitagsController
 		$this->check_data($tabel);
 
 		$data1 = array(
-			'title' => lang('tabel_b10_alias_v10_title'),
+			'title' => $this->title['tabel_b10_alias_v10'],
 			'konten' => $this->v10['tabel_b10'],
 			'dekor' => $this->tl_b10->dekor($this->theme_id, $this->aliases['tabel_b10']),
 			'tbl_b10' => $this->tl_b10->get_b10_by_field_archive('tabel_b10_field1', $code),
 		);
 
-		$this->load_page('tabel_b10', '_layouts/template', $data1);
+		$this->load_page('tabel_b10', 'layouts/template', $data1);
 	}
 	
 	public function history($code = null)
@@ -318,14 +317,14 @@ class Tabel_b10Controller extends OmnitagsController
 
 		$data1 = array(
 			'table_id' => $code,
-			'title' => lang('tabel_b10_alias_v11_title'),
+			'title' => $this->title['tabel_b10_alias_v11'],
 			'konten' => $this->v11['tabel_b10'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b10']),
 			'tbl_b10' => $this->tl_ot->get_by_field_history('tabel_b10', 'tabel_b10_field1', $code),
 			'current' => $this->tl_ot->get_by_field('tabel_b10', 'tabel_b10_field1', $code),
 		);
 
-		$this->load_page('tabel_b10', '_layouts/template', $data1);
+		$this->load_page('tabel_b10', 'layouts/template_admin', $data1);
 	}
 
 	//Push History Data into current data
@@ -337,14 +336,14 @@ class Tabel_b10Controller extends OmnitagsController
 		$tabel = $this->tl_ot->get_by_id_history('tabel_b10', $code)->result();
 		$this->check_data($tabel);
 
-		$code = $tabel[0]->{$this->aliases['tabel_b10_field1']};
+		$code = $tabel[0]->id;
 
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
 			$this->aliases['tabel_b10_field2'] => $tabel[0]->{$this->aliases['tabel_b10_field2']},
 
 			'updated_at' => date("Y-m-d\TH:i:s"),
-			'updated_by' => userdata($this->aliases['tabel_c2_field1']),
+			'updated_by' => userdata('id'),
 		);
 
 		$aksi = $this->tl_b10->update_b10($data, $code);

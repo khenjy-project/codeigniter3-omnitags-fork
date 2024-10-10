@@ -13,14 +13,13 @@ class Tabel_e4Controller extends OmnitagsController
 		$this->session_all();
 
 		$data1 = array(
-			'title' => lang('tabel_e4_alias_v1_title'),
+			'title' => $this->title['tabel_e4_alias_v1'],
 			'konten' => $this->v1['tabel_e4'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e4']),
 			'tbl_e4' => $this->tl_e4->get_all_e4(),
-			'tbl_e2' => $this->tl_e2->get_all_e2(),
 		);
 
-		$this->load_page('tabel_e4', '_layouts/template', $data1);
+		$this->load_page('tabel_e4', 'layouts/template', $data1);
 	}
 
 	// Public Pages
@@ -33,13 +32,13 @@ class Tabel_e4Controller extends OmnitagsController
 		$this->check_data($tabel);
 
 		$data1 = array(
-			'title' => lang('tabel_e4_alias_v8_title'),
+			'title' => $this->title['tabel_e4_alias_v8'],
 			'konten' => $this->v8['tabel_e4'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b2']),
 			'tbl_e4' => $this->tl_e4->get_e4_by_field('tabel_e4_field1', $code),
 		);
 
-		$this->load_page('tabel_e4', '_layouts/template', $data1);
+		$this->load_page('tabel_e4', 'layouts/template_admin', $data1);
 	}
 
 	// Account Only Pages
@@ -51,13 +50,13 @@ class Tabel_e4Controller extends OmnitagsController
 		$this->page_session_3();
 
 		$data1 = array(
-			'title' => lang('tabel_e4_alias_v3_title'),
+			'title' => $this->title['tabel_e4_alias_v3'],
 			'konten' => $this->v3['tabel_e4'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e4']),
 			'tbl_e4' => $this->tl_e4->get_all_e4(),
 		);
 
-		$this->load_page('tabel_e4', '_layouts/template', $data1);
+		$this->load_page('tabel_e4', 'layouts/template_admin', $data1);
 	}
 
 	// Print all data
@@ -67,13 +66,13 @@ class Tabel_e4Controller extends OmnitagsController
 		$this->page_session_3();
 
 		$data1 = array(
-			'title' => lang('tabel_e4_alias_v4_title'),
+			'title' => $this->title['tabel_e4_alias_v4'],
 			'konten' => $this->v4['tabel_e4'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e4']),
 			'tbl_e4' => $this->tl_e4->get_all_e4(),
 		);
 
-		$this->load_page('tabel_e4', '_layouts/printpage', $data1);
+		$this->load_page('tabel_e4', 'layouts/printpage', $data1);
 	}
 
 	/**
@@ -107,16 +106,16 @@ class Tabel_e4Controller extends OmnitagsController
 			''
 		);
 
-		$code = $this->add_code('tabel_e4', $this->aliases['tabel_e4_field1'], 5, '04');
+		$code = $this->add_code('tabel_e4', 'id', 5, '04');
 
 		$data = array(
-			$this->aliases['tabel_e4_field1'] => $code,
+			'id' => $code,
 			$this->aliases['tabel_e4_field2'] => $this->v_post['tabel_e4_field2'],
 			$this->aliases['tabel_e4_field3'] => $gambar,
 
 			'created_at' => date("Y-m-d\TH:i:s"),
 			'updated_at' => date("Y-m-d\TH:i:s"),
-			'updated_by' => userdata($this->aliases['tabel_c2_field1']),
+			'updated_by' => userdata('id'),
 		);
 
 		$aksi = $this->tl_e4->insert_e4($data);
@@ -167,7 +166,7 @@ class Tabel_e4Controller extends OmnitagsController
 			$this->aliases['tabel_e4_field3'] => $gambar,
 
 			'updated_at' => date("Y-m-d\TH:i:s"),
-			'updated_by' => userdata($this->aliases['tabel_c2_field1']),
+			'updated_by' => userdata('id'),
 		);
 
 		$aksi = $this->tl_e4->update_e4($data, $code);
@@ -190,7 +189,7 @@ class Tabel_e4Controller extends OmnitagsController
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
 			'deleted_at' => date("Y-m-d\TH:i:s"),
-			'updated_by' => userdata($this->aliases['tabel_c2_field1']),
+			'updated_by' => userdata('id'),
 		);
 
 		$aksi = $this->tl_e4->update_e4($data, $code);
@@ -213,7 +212,7 @@ class Tabel_e4Controller extends OmnitagsController
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
 			'deleted_at' => NULL,
-			'updated_by' => userdata($this->aliases['tabel_c2_field1']),
+			'updated_by' => userdata('id'),
 		);
 
 		$aksi = $this->tl_e4->update_e4($data, $code);
@@ -249,17 +248,16 @@ class Tabel_e4Controller extends OmnitagsController
 		$this->page_session_3();
 
 		$data1 = array(
-			'title' => lang('tabel_e4_alias_v9_title'),
+			'title' => $this->title['tabel_e4_alias_v9'],
 			'konten' => $this->v9['tabel_e4'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e4']),
 			'tbl_e4' => $this->tl_e4->get_all_e4_archive(),
 		);
 
-		$this->load_page('tabel_e4', '_layouts/template', $data1);
+		$this->load_page('tabel_e4', 'layouts/template', $data1);
 	}
-
-	// Public Pages
-	public function detail_archive($code = null)
+	
+	public function detai_archive($code = null)
 	{
 		$this->declarew();
 		$this->page_session_all();
@@ -268,13 +266,13 @@ class Tabel_e4Controller extends OmnitagsController
 		$this->check_data($tabel);
 
 		$data1 = array(
-			'title' => lang('tabel_e4_alias_v10_title'),
+			'title' => $this->title['tabel_e4_alias_v10'],
 			'konten' => $this->v10['tabel_e4'],
 			'dekor' => $this->tl_e4->dekor($this->theme_id, $this->aliases['tabel_e4']),
 			'tbl_e4' => $this->tl_e4->get_e4_by_field_archive('tabel_e4_field1', $code),
 		);
 
-		$this->load_page('tabel_e4', '_layouts/template', $data1);
+		$this->load_page('tabel_e4', 'layouts/template', $data1);
 	}
 	
 	public function history($code = null)
@@ -287,14 +285,14 @@ class Tabel_e4Controller extends OmnitagsController
 
 		$data1 = array(
 			'table_id' => $code,
-			'title' => lang('tabel_e4_alias_v11_title'),
+			'title' => $this->title['tabel_e4_alias_v11'],
 			'konten' => $this->v11['tabel_e4'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e4']),
 			'tbl_e4' => $this->tl_ot->get_by_field_history('tabel_e4', 'tabel_e4_field1', $code),
 			'current' => $this->tl_ot->get_by_field('tabel_e4', 'tabel_e4_field1', $code),
 		);
 
-		$this->load_page('tabel_e4', '_layouts/template', $data1);
+		$this->load_page('tabel_e4', 'layouts/template_admin', $data1);
 	}	
 
 	//Push History Data into current data
@@ -306,14 +304,14 @@ class Tabel_e4Controller extends OmnitagsController
 		$tabel = $this->tl_ot->get_by_id_history('tabel_e4', $code)->result();
 		$this->check_data($tabel);
 
-		$code = $tabel[0]->{$this->aliases['tabel_e4_field1']};
+		$code = $tabel[0]->id;
 
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
 			$this->aliases['tabel_e4_field2'] => $tabel[0]->{$this->aliases['tabel_e4_field2']},
 
 			'updated_at' => date("Y-m-d\TH:i:s"),
-			'updated_by' => userdata($this->aliases['tabel_c2_field1']),
+			'updated_by' => userdata('id'),
 		);
 
 		$aksi = $this->tl_e4->update_e4($data, $code);

@@ -17,7 +17,7 @@ class Tabel_c1Controller extends OmnitagsController
 		$this->page_session_3();
 
 		$data1 = array(
-			'title' => lang('tabel_c1_alias_v3_title'),
+			'title' => $this->title['tabel_c1_alias_v3'],
 			'konten' => $this->v3['tabel_c1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1']),
 			'tbl_c1' => $this->tl_c1->get_all_c1(),
@@ -25,7 +25,7 @@ class Tabel_c1Controller extends OmnitagsController
 			'tbl_e4' => $this->tl_e4->get_all_e4(),
 		);
 
-		$this->load_page('tabel_c1', '_layouts/template', $data1);
+		$this->load_page('tabel_c1', 'layouts/template_admin', $data1);
 	}
 
 	// Print all data
@@ -35,13 +35,13 @@ class Tabel_c1Controller extends OmnitagsController
 		$this->page_session_3();
 
 		$data1 = array(
-			'title' => lang('tabel_c1_alias_v4_title'),
+			'title' => $this->title['tabel_c1_alias_v4'],
 			'konten' => $this->v4['tabel_c1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1']),
 			'tbl_c1' => $this->tl_c1->get_all_c1(),
 		);
 
-		$this->load_page('tabel_c1', '_layouts/printpage', $data1);
+		$this->load_page('tabel_c1', 'layouts/printpage', $data1);
 	}
 
 	// Show 1 data
@@ -56,15 +56,15 @@ class Tabel_c1Controller extends OmnitagsController
 		];
 		$this->page_session_check($allowed_values);
 
-		$code = userdata($this->aliases['tabel_c1_field1']);
+		$code = userdata('id');
 		$data1 = array(
-			'title' => lang('tabel_c1_alias2_v6_title'),
+			'title' => $this->title['tabel_c1_alias2_v6'],
 			'konten' => $this->v6['tabel_c1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1']),
 			'tbl_c1' => $this->tl_c1->get_c1_by_field('tabel_c1_field1', $code),
 		);
 
-		$this->load_page('tabel_c1', '_layouts/template', $data1);
+		$this->load_page('tabel_c1', 'layouts/template_admin', $data1);
 	}
 
 	// Login page
@@ -75,11 +75,11 @@ class Tabel_c1Controller extends OmnitagsController
 
 		$data1 = array(
 			'title' => 'Login Sebagai ' . $this->aliases['tabel_c1_alias'],
-			'konten' => '_contents/tabel_c1Controller/login',
+			'konten' => 'contents/tabel_c1Controller/login',
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1']),
 		);
 
-		$this->load_page('', '_layouts/logpage', $data1);
+		$this->load_page('', 'layouts/logpage', $data1);
 	}
 
 	// Signup page
@@ -89,12 +89,12 @@ class Tabel_c1Controller extends OmnitagsController
 		$this->page_session_all();
 
 		$data1 = array(
-			'title' => 'Create an Account',
+			'title' => 'Create Account',
 			'konten' => 'signup',
 			'dekor' => $this->tl_b1->dekor($this->theme_id, 'signup'),
 		);
 
-		$this->load_page('', '_layouts/logpage', $data1);
+		$this->load_page('', 'layouts/logpage', $data1);
 	}
 
 	// Functions
@@ -121,11 +121,11 @@ class Tabel_c1Controller extends OmnitagsController
 			'tambah'
 		);
 
-		$code = $this->add_code('tabel_c1', $this->aliases['tabel_c1_field1'], 5, '01');
+		$code = $this->add_code('tabel_c1', 'id', 5, '01');
 
 		$data = array(
-			// $this->aliases['tabel_c1_field1'] => $id,
-			$this->aliases['tabel_c1_field1'] => $code,
+			// 'id' => $id,
+			'id' => $code,
 			$this->aliases['tabel_c1_field2'] => $this->v_post['tabel_c1_field2'],
 			$this->aliases['tabel_c1_field3'] => $this->v_post['tabel_c1_field3'],
 			$this->aliases['tabel_c1_field4'] => $this->v_post['tabel_c1_field4'],
@@ -182,7 +182,7 @@ class Tabel_c1Controller extends OmnitagsController
 			$this->aliases['tabel_c1_field6'] => $this->v_post['tabel_c1_field6'],
 
 			'updated_at' => date("Y-m-d\TH:i:s"),
-			'updated_by' => userdata($this->aliases['tabel_c2_field1']),
+			'updated_by' => userdata('id'),
 		);
 
 		$aksi = $this->tl_c1->update_c1($data, $code);
@@ -205,7 +205,7 @@ class Tabel_c1Controller extends OmnitagsController
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
 			'deleted_at' => date("Y-m-d\TH:i:s"),
-			'updated_by' => userdata($this->aliases['tabel_c2_field1']),
+			'updated_by' => userdata('id'),
 		);
 
 		$aksi = $this->tl_c1->update_c1($data, $code);
@@ -228,7 +228,7 @@ class Tabel_c1Controller extends OmnitagsController
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
 			'deleted_at' => NULL,
-			'updated_by' => userdata($this->aliases['tabel_c2_field1']),
+			'updated_by' => userdata('id'),
 		);
 
 		$aksi = $this->tl_c1->update_c1($data, $code);
@@ -280,7 +280,7 @@ class Tabel_c1Controller extends OmnitagsController
 			$this->aliases['tabel_c1_field7'] => $this->v_post['tabel_c1_field7'],
 
 			'updated_at' => date("Y-m-d\TH:i:s"),
-			'updated_by' => userdata($this->aliases['tabel_c2_field1']),
+			'updated_by' => userdata('id'),
 		);
 
 		$aksi = $this->tl_c1->update_c1($data, $code);
@@ -293,7 +293,7 @@ class Tabel_c1Controller extends OmnitagsController
 
 		$tabel_c1_field2 = $tabel_c1[0]->nama;
 		$tabel_c1_field3 = $tabel_c1[0]->email;
-		$tabel_c1_field5 = $tabel_c1[0]->hp;
+		$tabel_c1_field5 = $tabel_c1[0]->phone;
 		$tabel_c1_field7 = $tabel_c1[0]->role;
 
 		// membuat session baru berdasarkan data yang telah diupdate
@@ -390,19 +390,19 @@ class Tabel_c1Controller extends OmnitagsController
 				$code = $tabel_c1[0]->id_petugas;
 				$tabel_c1_field2 = $tabel_c1[0]->nama;
 				$tabel_c1_field3 = $tabel_c1[0]->email;
-				$tabel_c1_field5 = $tabel_c1[0]->hp;
+				$tabel_c1_field5 = $tabel_c1[0]->phone;
 				$tabel_c1_field7 = $tabel_c1[0]->role;
 				// $tabel_c2_field6 = $this->aliases['tabel_c2_field6_value5'];
 
-				set_userdata($this->aliases['tabel_c1_field1'], $code);
+				set_userdata('id', $code);
 				set_userdata($this->aliases['tabel_c1_field2'], $tabel_c1_field2);
 				set_userdata($this->aliases['tabel_c1_field3'], $tabel_c1_field3);
 				set_userdata($this->aliases['tabel_c1_field5'], $tabel_c1_field5);
 				set_userdata($this->aliases['tabel_c1_field7'], $tabel_c1_field7);
-				// set_userdata($this->aliases['tabel_c2_field6'], $tabel_c2_field6);
+				// set_userdata('role', $tabel_c2_field6);
 
 
-				redirect(site_url($this->language_code . '/' . 'home'));
+				redirect(site_url('home'));
 
 				// jika password salah
 			} else {
@@ -422,14 +422,14 @@ class Tabel_c1Controller extends OmnitagsController
 
 
 				set_flashdata($this->views['flash1'], $this->aliases['tabel_c1_field5_alias'] . ' salah!');
-				redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c1'] . '/login'));
+				redirect(site_url($this->aliases['tabel_c1'] . '/login'));
 			}
 
 			// jika jumlah data lebih dari 0
 		} else {
 
 			set_flashdata($this->views['flash1'], $this->aliases['tabel_c1_field1_alias'] . ' tidak tersedia!');
-			redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c1'] . '/login'));
+			redirect(site_url($this->aliases['tabel_c1'] . '/login'));
 		}
 
 		// // mencari apakah jumlah data kurang dari 0
@@ -442,7 +442,7 @@ class Tabel_c1Controller extends OmnitagsController
 		// 		$codeuser = $tabel_c1[0]->id_petugas;
 		// 		$nama = $tabel_c1[0]->nama;
 		// 		$code = $tabel_c1[0]->email;
-		// 		$hp = $tabel_c1[0]->hp;
+		// 		$hp = $tabel_c1[0]->phone;
 		// 		$level = $tabel_c1[0]->level;
 
 		// 		set_userdata('id_petugas', $codeuser);
@@ -452,14 +452,14 @@ class Tabel_c1Controller extends OmnitagsController
 		// 		set_userdata('level', $level);
 
 		// 		redirect($_SERVER['HTTP_REFERER']); 
-		redirect(site_url($this->language_code . '/' . 'home'));
+		redirect(site_url('home'));
 
 		// 		// jika password salah
 		// 	} else {
 
 		// 		set_flashdata($this->views['flash1'], 'Password Salah!');
 		// 		redirect($_SERVER['HTTP_REFERER']); 
-		redirect(site_url($this->language_code . '/login'));
+		redirect(site_url('login'));
 		// 	}
 
 		// 	// jika jumlah data lebih dari 0
@@ -467,7 +467,7 @@ class Tabel_c1Controller extends OmnitagsController
 
 		// 	set_flashdata($this->views['flash1'], 'Email tidak tersedia!');
 		// 	redirect($_SERVER['HTTP_REFERER']); 
-		redirect(site_url($this->language_code . '/login'));
+		redirect(site_url('login'));
 		// }	
 	}
 
@@ -486,7 +486,7 @@ class Tabel_c1Controller extends OmnitagsController
 		// menghapus session
 		session_destroy();
 		redirect($_SERVER['HTTP_REFERER']);
-		redirect(site_url($this->language_code . '/' . 'home'));
+		redirect(site_url('home'));
 	}
 
 	// Archive Page
@@ -496,17 +496,16 @@ class Tabel_c1Controller extends OmnitagsController
 		$this->page_session_3();
 
 		$data1 = array(
-			'title' => lang('tabel_c1_alias_v9_title'),
+			'title' => $this->title['tabel_c1_alias_v9'],
 			'konten' => $this->v9['tabel_c1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1']),
 			'tbl_c1' => $this->tl_c1->get_all_c1_archive(),
 		);
 
-		$this->load_page('tabel_c1', '_layouts/template', $data1);
+		$this->load_page('tabel_c1', 'layouts/template', $data1);
 	}
-
-	// Public Pages
-	public function detail_archive($code = null)
+	
+	public function detai_archive($code = null)
 	{
 		$this->declarew();
 		$this->page_session_all();
@@ -515,13 +514,13 @@ class Tabel_c1Controller extends OmnitagsController
 		$this->check_data($tabel);
 
 		$data1 = array(
-			'title' => lang('tabel_c1_alias_v10_title'),
+			'title' => $this->title['tabel_c1_alias_v10'],
 			'konten' => $this->v10['tabel_c1'],
 			'dekor' => $this->tl_c1->dekor($this->theme_id, $this->aliases['tabel_c1']),
 			'tbl_c1' => $this->tl_c1->get_c1_by_field_archive('tabel_c1_field1', $code),
 		);
 
-		$this->load_page('tabel_c1', '_layouts/template', $data1);
+		$this->load_page('tabel_c1', 'layouts/template', $data1);
 	}
 	
 	public function history($code = null)
@@ -534,14 +533,14 @@ class Tabel_c1Controller extends OmnitagsController
 
 		$data1 = array(
 			'table_id' => $code,
-			'title' => lang('tabel_c1_alias_v11_title'),
+			'title' => $this->title['tabel_c1_alias_v11'],
 			'konten' => $this->v11['tabel_c1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1']),
 			'tbl_c1' => $this->tl_ot->get_by_field_history('tabel_c1', 'tabel_c1_field1', $code),
 			'current' => $this->tl_ot->get_by_field('tabel_c1', 'tabel_c1_field1', $code),
 		);
 
-		$this->load_page('tabel_c1', '_layouts/template', $data1);
+		$this->load_page('tabel_c1', 'layouts/template_admin', $data1);
 	}
 
 	//Push History Data into current data
@@ -553,14 +552,14 @@ class Tabel_c1Controller extends OmnitagsController
 		$tabel = $this->tl_ot->get_by_id_history('tabel_c1', $code)->result();
 		$this->check_data($tabel);
 
-		$code = $tabel[0]->{$this->aliases['tabel_c1_field1']};
+		$code = $tabel[0]->id;
 
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
 			$this->aliases['tabel_c1_field2'] => $tabel[0]->{$this->aliases['tabel_c1_field2']},
 
 			'updated_at' => date("Y-m-d\TH:i:s"),
-			'updated_by' => userdata($this->aliases['tabel_c2_field1']),
+			'updated_by' => userdata('id'),
 		);
 
 		$aksi = $this->tl_c1->update_c1($data, $code);
