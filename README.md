@@ -1,10 +1,7 @@
 # Omnitags
 
-This repository is where I experiment with Omnitags and its implementation. The primary goal of this project is to streamline framework usage, making it easier to deploy and manage multiple projects without the repetitive process of copying and pasting. With Omnitags, I aim to improve the efficiency of project distribution through branches, enabling quicker and more dynamic framework integration across different applications.
+This monorepo goals is to experiment on the implementation of Omnitags. Omnitags is a joki website created using codeigniter 3 and bootstrap 4, aiming to streamline the variables of table and field names using global variables that I store in a JSON file. This json file can compatible for exporting to both coding and testing using postman. Projects that are approved will be put into individual repository for further development. The branches is named after it's database name.
 
-## Purpose
-
-Omnitags simplifies the setup and deployment of various projects by utilizing a branch-based implementation rather than manual duplication, saving both time and effort. It’s designed to scale seamlessly across different web projects, making framework management more efficient and flexible.
 
 ## Past Projects Built Using Omnitags
 
